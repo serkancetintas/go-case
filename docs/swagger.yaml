@@ -1,0 +1,49 @@
+definitions:
+  api.setParam:
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/flush:
+    get:
+      responses: {}
+      summary: Flush all key value pairs
+      tags:
+      - keyvalueflush
+  /api/get:
+    get:
+      parameters:
+      - description: Key name
+        in: query
+        name: key
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+      summary: Get value with key
+      tags:
+      - keyvalue
+  /api/set:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Key Value Data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.setParam'
+      produces:
+      - application/json
+      responses: {}
+      summary: Set key and value
+      tags:
+      - keyvalueset
+swagger: "2.0"

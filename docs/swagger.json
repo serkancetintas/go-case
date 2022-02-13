@@ -1,0 +1,78 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/flush": {
+            "get": {
+                "tags": [
+                    "keyvalueflush"
+                ],
+                "summary": "Flush all key value pairs",
+                "responses": {}
+            }
+        },
+        "/api/get": {
+            "get": {
+                "tags": [
+                    "keyvalue"
+                ],
+                "summary": "Get value with key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Key name",
+                        "name": "key",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/set": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "keyvalueset"
+                ],
+                "summary": "Set key and value",
+                "parameters": [
+                    {
+                        "description": "Key Value Data",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.setParam"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "api.setParam": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
